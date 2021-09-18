@@ -1,0 +1,82 @@
+networks:
+  HWcYI_LRNjoD8GhxbGDz-1:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 192.168.100.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 192.168.100.254
+        subnet: 192.168.100.0/24
+  HWcYI_LRNjoD8GhxbGDz-20:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 192.168.101.253
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 192.168.101.254
+        subnet: 192.168.101.0/24
+  HWcYI_LRNjoD8GhxbGDz-23:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 192.168.102.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 192.168.102.254
+        subnet: 192.168.102.0/24
+services:
+  cli1:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: cli1
+    image: ${REPO}/netcli:1.0.0
+    networks:
+      HWcYI_LRNjoD8GhxbGDz-1:
+        ipv4_address: 192.168.100.1
+      HWcYI_LRNjoD8GhxbGDz-20:
+        ipv4_address: 192.168.101.1
+      HWcYI_LRNjoD8GhxbGDz-23:
+        ipv4_address: 192.168.102.1
+    restart: unless-stopped
+  cli2:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: cli2
+    image: ${REPO}/netcli:1.0.0
+    networks:
+      HWcYI_LRNjoD8GhxbGDz-1:
+        ipv4_address: 192.168.100.2
+    restart: unless-stopped
+  cli3:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: cli3
+    image: ${REPO}/netcli:1.0.0
+    networks:
+      HWcYI_LRNjoD8GhxbGDz-23:
+        ipv4_address: 192.168.102.2
+    restart: unless-stopped
+  web1:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: web1
+    image: ${REPO}/nginx:1.0.0
+    networks:
+      HWcYI_LRNjoD8GhxbGDz-20:
+        ipv4_address: 192.168.101.2
+    restart: unless-stopped
+version: '2.4'

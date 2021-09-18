@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2021-09-17T08:54:37.596Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.82 Safari/537.36" etag="xUrBv0-5916Jvuo1EDll" version="13.9.1" type="google">
+  <diagram id="ePvfl_PeEV-7XTQ9tvGA" name="Page-1">
+    <mxGraphModel dx="4119" dy="889" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="0" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="yZ_quIIVvFn468VsrmnC-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=diamond;endFill=1;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-1" target="yZ_quIIVvFn468VsrmnC-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-9" value="subnet: 100.64.0.0/29" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-5">
+          <mxGeometry x="-0.2649" y="2" relative="1" as="geometry">
+            <mxPoint y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-30" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-1" target="yZ_quIIVvFn468VsrmnC-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-31" value="ip: 1.1.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-30">
+          <mxGeometry x="0.3405" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-32" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-1" target="yZ_quIIVvFn468VsrmnC-24">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-33" value="ip: 1.2.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-32">
+          <mxGeometry x="0.1545" relative="1" as="geometry">
+            <mxPoint x="3.330000000000002" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-1" value="name: rt1&#xa;image: ${REPO}/frrouting:1.0.0&#xa;restart: unless-stopped&#xa;environment:&#xa;  CFG_ospfd: |-&#xa;    router ospf&#xa;     network 100.64.0.0/29 area 0.0.0.1&#xa;     network 100.64.24.0/29 area 0.0.0.1&#xa;     redistribute connected&#xa;volumes:&#xa;- ${CONFD}/frr/conf.sh:/conf.sh&#xa;cap_add:&#xa;- NET_ADMIN&#xa;privileged: true" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1600" y="670" width="460" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=diamond;endFill=1;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-2" target="yZ_quIIVvFn468VsrmnC-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-10" value="subnet: 100.64.8.0/29" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-6">
+          <mxGeometry x="0.0914" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-34" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-2" target="yZ_quIIVvFn468VsrmnC-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-35" value="ip: 2.1.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-34">
+          <mxGeometry x="-0.1485" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-36" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-2" target="yZ_quIIVvFn468VsrmnC-22">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-1370" y="1270" />
+              <mxPoint x="-1370" y="1270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-37" value="ip: 2.2.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-36">
+          <mxGeometry x="0.2267" y="-1" relative="1" as="geometry">
+            <mxPoint x="1" y="-10.83" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-2" value="name: rt2&#xa;image: ${REPO}/frrouting:1.0.0&#xa;restart: unless-stopped&#xa;environment:&#xa;  CFG_ospfd: |-&#xa;    router ospf&#xa;     network 100.64.0.0/29 area 0.0.0.1&#xa;     network 100.64.8.0/29 area 0.0.0.1&#xa;     redistribute connected&#xa;volumes:&#xa;- ${CONFD}/frr/conf.sh:/conf.sh&#xa;cap_add:&#xa;- NET_ADMIN&#xa;privileged: true" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1600" y="1000" width="460" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=diamond;endFill=1;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-3" target="yZ_quIIVvFn468VsrmnC-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-11" value="subnet: 100.64.16.0/29" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-7">
+          <mxGeometry x="0.2307" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-38" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-3" target="yZ_quIIVvFn468VsrmnC-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-42" value="ip: 3.1.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-38">
+          <mxGeometry x="-0.2622" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-39" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-3" target="yZ_quIIVvFn468VsrmnC-17">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-460" y="1128" />
+              <mxPoint x="-460" y="1128" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-43" value="ip: 3.2.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-39">
+          <mxGeometry y="-11" relative="1" as="geometry">
+            <mxPoint y="-11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-3" value="name: rt3&#xa;image: ${REPO}/frrouting:1.0.0&#xa;restart: unless-stopped&#xa;environment:&#xa;  CFG_ospfd: |-&#xa;    router ospf&#xa;     network 100.64.8.0/29 area 0.0.0.1&#xa;     network 100.64.16.0/29 area 0.0.0.1&#xa;     redistribute connected&#xa;volumes:&#xa;- ${CONFD}/frr/conf.sh:/conf.sh&#xa;cap_add:&#xa;- NET_ADMIN&#xa;privileged: true" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;comic=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="1000" width="460" height="245" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=diamond;endFill=1;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-4" target="yZ_quIIVvFn468VsrmnC-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-12" value="subnet: 100.64.24.0/29" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-8">
+          <mxGeometry x="-0.1541" y="-1" relative="1" as="geometry">
+            <mxPoint x="-13.53" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-40" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-4" target="yZ_quIIVvFn468VsrmnC-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-44" value="ip: 4.1.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-40">
+          <mxGeometry x="-0.249" y="1" relative="1" as="geometry">
+            <mxPoint x="7.5" y="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-41" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-4" target="yZ_quIIVvFn468VsrmnC-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-45" value="ip: 4.2.0.1" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-41">
+          <mxGeometry x="0.2571" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-4" value="name: rt4&#xa;image: ${REPO}/frrouting:1.0.0&#xa;restart: unless-stopped&#xa;environment:&#xa;  CFG_ospfd: |-&#xa;    router ospf&#xa;     network 100.64.16.0/29 area 0.0.0.1&#xa;     network 192.168.24.20/30 area 0.0.0.1&#xa;     redistribute connected&#xa;volumes:&#xa;- ${CONFD}/frr/conf.sh:/conf.sh&#xa;cap_add:&#xa;- NET_ADMIN&#xa;privileged: true" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-960" y="670" width="460" height="255" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-13" value="subnet: 4.2.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="590" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-16" value="subnet: 4.1.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-413" y="782.5" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-17" value="subnet: 3.2.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-413" y="1112.5" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-20" value="subnet: 3.1.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-820" y="1320" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-22" value="subnet: 2.2.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1460" y="1320" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-23" value="subnet: 2.1.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1890" y="1107.5" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-24" value="subnet: 1.2.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1890" y="782.5" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-27" value="subnet: 1.1.0.0/16" style="shape=rectangle;rounded=0;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;comic=0;" vertex="1" parent="1">
+          <mxGeometry x="-1460" y="580" width="180" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-47" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-46" target="yZ_quIIVvFn468VsrmnC-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-48" value="ip: 3.1.0.2" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-47">
+          <mxGeometry x="0.2525" y="-1" relative="1" as="geometry">
+            <mxPoint x="-1" y="3.53" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-46" value="name: web1&#xa;image: ${REPO}/nginx:1.0.0&#xa;restart: unless-stopped&#xa;cap_add:&#xa;- NET_ADMIN" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-870" y="1420" width="280" height="92.5" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-50" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=oval;startFill=1;endArrow=open;endFill=0;fontSize=15;" edge="1" parent="1" source="yZ_quIIVvFn468VsrmnC-49" target="yZ_quIIVvFn468VsrmnC-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-51" value="ip: 1.1.0.2" style="edgeLabel;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=15;" vertex="1" connectable="0" parent="yZ_quIIVvFn468VsrmnC-50">
+          <mxGeometry x="-0.2151" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yZ_quIIVvFn468VsrmnC-49" value="name: cli1&#xa;image: ${REPO}/netcli:1.0.0&#xa;restart: unless-stopped&#xa;cap_add:&#xa;- NET_ADMIN" style="shape=process;backgroundOutline=1;align=left;fontSize=15;fontStyle=0;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="-1510" y="420" width="280" height="92.5" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

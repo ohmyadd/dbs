@@ -1,0 +1,231 @@
+networks:
+  yZ_quIIVvFn468VsrmnC-13:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 4.2.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 4.2.255.254
+        subnet: 4.2.0.0/16
+  yZ_quIIVvFn468VsrmnC-16:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 4.1.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 4.1.255.254
+        subnet: 4.1.0.0/16
+  yZ_quIIVvFn468VsrmnC-17:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 3.2.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 3.2.255.254
+        subnet: 3.2.0.0/16
+  yZ_quIIVvFn468VsrmnC-20:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 3.1.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 3.1.255.254
+        subnet: 3.1.0.0/16
+  yZ_quIIVvFn468VsrmnC-22:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 2.2.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 2.2.255.254
+        subnet: 2.2.0.0/16
+  yZ_quIIVvFn468VsrmnC-23:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 2.1.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 2.1.255.254
+        subnet: 2.1.0.0/16
+  yZ_quIIVvFn468VsrmnC-24:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 1.2.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 1.2.255.254
+        subnet: 1.2.0.0/16
+  yZ_quIIVvFn468VsrmnC-27:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 1.1.0.1
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 1.1.255.254
+        subnet: 1.1.0.0/16
+  yZ_quIIVvFn468VsrmnC-5:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 100.64.0.5
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 100.64.0.6
+        subnet: 100.64.0.0/29
+  yZ_quIIVvFn468VsrmnC-6:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 100.64.8.5
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 100.64.8.6
+        subnet: 100.64.8.0/29
+  yZ_quIIVvFn468VsrmnC-7:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 100.64.16.5
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 100.64.16.6
+        subnet: 100.64.16.0/29
+  yZ_quIIVvFn468VsrmnC-8:
+    driver: ovn
+    driver_opts:
+      com.ohmyadd.network.ovn.gateway: 100.64.24.5
+    ipam:
+      config:
+      - aux_addresses: {}
+        gateway: 100.64.24.6
+        subnet: 100.64.24.0/29
+services:
+  cli1:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: cli1
+    image: ${REPO}/netcli:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-27:
+        ipv4_address: 1.1.0.2
+    restart: unless-stopped
+  rt1:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    environment:
+      CFG_ospfd: "router ospf\n network 100.64.0.0/29 area 0.0.0.1\n network 100.64.24.0/29\
+        \ area 0.0.0.1\n redistribute connected"
+    hostname: rt1
+    image: ${REPO}/frrouting:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-24:
+        ipv4_address: 1.2.0.1
+      yZ_quIIVvFn468VsrmnC-27:
+        ipv4_address: 1.1.0.1
+      yZ_quIIVvFn468VsrmnC-5:
+        ipv4_address: 100.64.0.1
+      yZ_quIIVvFn468VsrmnC-8:
+        ipv4_address: 100.64.24.1
+    privileged: true
+    restart: unless-stopped
+    volumes:
+    - ${CONFD}/frr/conf.sh:/conf.sh
+  rt2:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    environment:
+      CFG_ospfd: "router ospf\n network 100.64.0.0/29 area 0.0.0.1\n network 100.64.8.0/29\
+        \ area 0.0.0.1\n redistribute connected"
+    hostname: rt2
+    image: ${REPO}/frrouting:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-22:
+        ipv4_address: 2.2.0.1
+      yZ_quIIVvFn468VsrmnC-23:
+        ipv4_address: 2.1.0.1
+      yZ_quIIVvFn468VsrmnC-5:
+        ipv4_address: 100.64.0.2
+      yZ_quIIVvFn468VsrmnC-6:
+        ipv4_address: 100.64.8.1
+    privileged: true
+    restart: unless-stopped
+    volumes:
+    - ${CONFD}/frr/conf.sh:/conf.sh
+  rt3:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    environment:
+      CFG_ospfd: "router ospf\n network 100.64.8.0/29 area 0.0.0.1\n network 100.64.16.0/29\
+        \ area 0.0.0.1\n redistribute connected"
+    hostname: rt3
+    image: ${REPO}/frrouting:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-17:
+        ipv4_address: 3.2.0.1
+      yZ_quIIVvFn468VsrmnC-20:
+        ipv4_address: 3.1.0.1
+      yZ_quIIVvFn468VsrmnC-6:
+        ipv4_address: 100.64.8.2
+      yZ_quIIVvFn468VsrmnC-7:
+        ipv4_address: 100.64.16.1
+    privileged: true
+    restart: unless-stopped
+    volumes:
+    - ${CONFD}/frr/conf.sh:/conf.sh
+  rt4:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    environment:
+      CFG_ospfd: "router ospf\n network 100.64.16.0/29 area 0.0.0.1\n network 192.168.24.20/30\
+        \ area 0.0.0.1\n redistribute connected"
+    hostname: rt4
+    image: ${REPO}/frrouting:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-13:
+        ipv4_address: 4.2.0.1
+      yZ_quIIVvFn468VsrmnC-16:
+        ipv4_address: 4.1.0.1
+      yZ_quIIVvFn468VsrmnC-7:
+        ipv4_address: 100.64.16.2
+      yZ_quIIVvFn468VsrmnC-8:
+        ipv4_address: 100.64.24.2
+    privileged: true
+    restart: unless-stopped
+    volumes:
+    - ${CONFD}/frr/conf.sh:/conf.sh
+  web1:
+    cap_add:
+    - NET_ADMIN
+    dns: 8.8.8.8
+    dns_search: test.net
+    domainname: test.net
+    hostname: web1
+    image: ${REPO}/nginx:1.0.0
+    networks:
+      yZ_quIIVvFn468VsrmnC-20:
+        ipv4_address: 3.1.0.2
+    restart: unless-stopped
+version: '2.4'

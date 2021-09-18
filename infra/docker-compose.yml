@@ -1,0 +1,53 @@
+version: '3.5'
+services:
+  central:
+    image: ${IMAGE_REPO}/ovn:1.0.0
+    restart: unless-stopped
+    cap_add:
+      - SYS_NICE
+    environment:
+      - COMMAND="/root/start-db.sh"
+    volumes:
+      - "/sys:/sys:ro"
+    networks:
+      ovn:
+        ipv4_address: 172.19.0.2
+
+  node:
+    image: ${IMAGE_REPO}/ovn:1.0.0
+    restart: unless-stopped
+    privileged: true
+    network_mode: "host"
+    environment:
+      - OVN_SB_SERVICE_PORT=6642
+      - OVN_SB_SERVICE_HOST=172.19.0.2 
+      - OVN_ENCAP_IP=172.19.0.1
+      - OVS_DB_MANAGER=ptcp:6640:172.19.0.1
+      - COMMAND="/root/start-ovs.sh"
+    volumes:
+      - /lib/modules:/lib/modules:ro
+      - /sys:/sys:ro
+      - /var/run/opevswitch/:/var/run/openvswitch
+  
+  driver:
+    image: ohmyadd/docker-remote-driver
+    build:
+        context: driver
+        args:
+            IMAGE_REPO: ${IMAGE_REPO}
+    restart: unless-stopped
+    privileged: true
+    network_mode: "host"
+    pid: host
+    volumes:
+      - /var/run/opevswitch/:/var/run/openvswitch
+      - /etc/docker/plugins:/etc/docker/plugins
+      - /var/run/docker/netns:/var/run/docker/netns
+      - /var/run/docker/netns:/var/run/netns
+
+networks:
+  ovn:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.19.0.0/24"
